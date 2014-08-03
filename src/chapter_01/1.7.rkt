@@ -30,13 +30,13 @@
 
 ;;; 封装辅助过程
 (define (sqrt x)
-  (define (improve guess x)
+  (define (improve guess)
     (average guess (/ x guess)))
-  (define (good-enough? guess x)
+  (define (good-enough? guess)
     (< (abs (- (improve guess x) guess)) 0.0000001))
-  (define (sqrt-iter guess x)
+  (define (sqrt-iter guess)
     (if (good-enough? guess x)
         guess
         (sqrt-iter (improve guess x) x)))
-  (sqrt 1.0 x))
+  (sqrt-iter 1.0))
   
